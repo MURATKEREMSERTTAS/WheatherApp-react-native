@@ -1,3 +1,4 @@
+import moment from 'moment-timezone';
 import React,{useEffect,useState} from 'react'
 import { StyleSheet, Text, View,Image, ScrollView } from 'react-native'
 
@@ -5,7 +6,7 @@ import { StyleSheet, Text, View,Image, ScrollView } from 'react-native'
 const days=["Sunday","Monday","Tuesday","wednesday","Thursday","Friday","Saturday"]
 
 export default function WheatherData({list}){
-    const [{temp:{day,night}}]=list;
+    const [{temp:{day,night},weather:[{main}]}]=list;
     const[date,setDate]=useState("")
     useEffect(()=>{
         setInterval(()=>{
@@ -18,34 +19,35 @@ export default function WheatherData({list}){
     return(
         <>{list.map((object,index)=>(
         <View>
-            <View style={styles.view} key={index} style={{flexDirection:"column"}}>
+            <View style={styles.view} key={index}>
                 <View style={{flexDirection:"row"}}>
                     <Image source={img} style={styles.image}/>
                     <View>
-                        <Text style={styles.Day} >{object.dt}</Text>
+                        <Text style={styles.Day} >{moment(object.dt*1000).format('dddd')}</Text>
                         <Text style={styles.Temp}>Night {object.temp.night}&#176;C</Text>
                         <Text style={styles.Temp}>Day {object.temp.day}&#176;C</Text>
-                        <Text style={styles.Temp}>{object.weather.description}</Text>
+                        <Text style={styles.Temp}>{object.weather.main}</Text>
                     </View>
                 </View>
                 <View style={{flexDirection:"column"}}>
                     <View style={{flexDirection:"row",alignSelf:"baseline"}}>    
-                        <View style={{alignItems:"center"}}>
-                            <Text>Temperature Values</Text>
+                        <View style={styles.ItemsContainer}>
+                            <Text style={{color:"black",textAlign:"center"}}>Temperature Values</Text>
                             <Text style={styles.Temp}>Min {object.temp.min}&#176;C</Text>
                             <Text style={styles.Temp}>Max {object.temp.max}&#176;C</Text>
                             <Text style={styles.Temp}>Evening {object.temp.eve}&#176;C</Text>
                             <Text style={styles.Temp}>Morn {object.temp.morn}&#176;C</Text>
                         </View>
-                        <View style={{alignItems:"center",}}>
-                            <Text>Feels Like</Text>
+                        <View style={styles.ItemsContainer}>
+                            <Text style={{color:"black",textAlign:"center"}} >Feels Like</Text>
                             <Text style={styles.Temp}>Day {object.feels_like.day}&#176;C</Text>
                             <Text style={styles.Temp}>Night {object.feels_like.night}&#176;C</Text>
                             <Text style={styles.Temp}>Evening {object.feels_like.eve}&#176;C</Text>
                             <Text style={styles.Temp}>Morning {object.feels_like.morn}&#176;C</Text>
                         </View>
                     </View>
-                    <View style={{alignItems:"flex-start",}} >
+                    <View style={styles.ItemsContainer} >
+                        <Text style={{color:"black",textAlign:"center"}} >Details</Text>
                         <Text style={styles.Temp}>Wind Speed {object.speed}m/s</Text>
                         <Text style={styles.Temp}>Wind Direction {object.deg}&#176;</Text>
                         <Text style={styles.Temp}>Wind Gust {object.gust}m/s</Text>
@@ -54,7 +56,6 @@ export default function WheatherData({list}){
                     </View>
             </View>
             </View>
-            
         </View>))}
         </>
     )
@@ -70,12 +71,6 @@ const styles = StyleSheet.create({
         borderRadius:50,
         height:80
     },
-    Temp:{
-        fontSize:20,
-        color:"gray",
-        fontWeight:"100",
-        textAlign:"center",
-    },
     image:{
         resizeMode:"center",
         height:200,
@@ -83,5 +78,20 @@ const styles = StyleSheet.create({
     },
     view:{
         alignItems:"center",
+        padding:15
+    },
+    ItemsContainer:{
+        backgroundColor:"gray",
+        backfaceVisibility:"visible",
+        borderRadius:10,
+        padding:10,
+        margin:10
+    },
+    Temp:{
+        color:"black",
+        fontSize:15,
+        fontWeight:"100",
+        textAlign:"center"
+
     }
 });

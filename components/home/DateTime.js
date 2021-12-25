@@ -1,5 +1,6 @@
 import React,{useEffect, useState} from 'react'
 import { View, Text,StyleSheet, TouchableOpacity } from 'react-native'
+import moment from 'moment-timezone';
 
 const months=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
 const days=["Sunday","Monday","Tuesday","wednesday","Thursday","Friday","Saturday"]
@@ -17,8 +18,8 @@ export default function DateTime({weatherData}){
     const[date,setDate]=useState("")
     const[time,setTime]=useState("")
     const {city,list}=weatherData;
-    const {coord:{lon,lat},name}=city;
-    const [{pressure,humidity}]=list;
+    const {coord:{lon,lat},name,timezone}=city;
+    const [{pressure,humidity,sunset,sunrise}]=list;
 
     
 
@@ -53,6 +54,8 @@ export default function DateTime({weatherData}){
                 <View style={styles.ItemsContainer} >
                     <DateTimeItems title="Humidty" value={humidity} unit="%" />
                     <DateTimeItems title="Pressure" value={pressure} unit="hPA" />
+                    <DateTimeItems title="Sunset" value={moment(sunset*1000).format('HH:mm')} />
+                    <DateTimeItems title="Sunrise" value={moment(sunrise*1000).format('HH:mm')} />
                 </View>
             </View>
             <View style={styles.RigthContainer} >

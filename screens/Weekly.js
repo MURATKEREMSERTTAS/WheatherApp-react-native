@@ -52,7 +52,9 @@ export default function Home({navigation}) {
     return (
         <View style={{flex:1,backgroundColor:"#eee",marginTop:"8%"}} >
             <View style={{marginHorizontal:5,marginVertical:10,height:"90%"}} >
-            <SearchBar cityHandler={setCity} />
+                <View style={{height:"23.5%"}}>
+                    <SearchBar cityHandler={setCity} />
+                </View>
             <ScrollView horizontal style={{paddingHorizontal:34}} >
                     <WheatherData list={list}/>
             </ScrollView>

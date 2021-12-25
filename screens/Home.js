@@ -18,6 +18,7 @@ export default function Home({navigation}) {
             if(res.status==200){
             const data = await res.json();
             setWeatherData(data);
+            console.log(data);
             }
             else{
                 setWeatherData(null);
@@ -55,7 +56,7 @@ export default function Home({navigation}) {
             <View>
                 <DateTime weatherData={weatherData} />
             </View>
-            <View style={{marginHorizontal:5,marginVertical:10,height:"72%"}} >
+            <View style={{marginHorizontal:5,marginVertical:10,height:"68%"}} >
             <SearchBar cityHandler={setCity} />
             <WheatherData list={list} />
             </View>
