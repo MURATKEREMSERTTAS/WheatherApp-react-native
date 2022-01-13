@@ -4,7 +4,7 @@ import SearchBar from '../components/SearchBar'
 import WheatherData from '../components/home/WeatherData'
 import BottomTabs from '../components/BottomTabs'
 
-const Api_Key="02abc8a84f7069b3d7322ccd33235e3b"
+const Api_Key=""
 export default function Home({navigation}) {
     const [abc,setCity] = useState("Edirne");
     const [weatherData,setWeatherData]=useState(null)
@@ -17,6 +17,7 @@ export default function Home({navigation}) {
             if(res.status==200){
             const data = await res.json();
             setWeatherData(data);
+            console.log(data);
             }
             else{
                 setWeatherData(null);
@@ -39,7 +40,7 @@ export default function Home({navigation}) {
             </View>
         )
     }
-    else if(weatherData===null){
+    else if(weatherData==null){
         return(
             <View>
             </View>
@@ -50,12 +51,12 @@ export default function Home({navigation}) {
     //const [{},list2:{}]=list;
     //console.log(icon);
     return (
-        <View style={{flex:1,backgroundColor:"#eee",marginTop:"8%"}} >
+        <View style={{flex:1,backgroundColor:"#00000033",marginTop:"8%"}} >
             <View style={{marginHorizontal:5,marginVertical:10,height:"90%"}} >
                 <View style={{height:"23.5%"}}>
                     <SearchBar cityHandler={setCity} />
                 </View>
-            <ScrollView horizontal style={{paddingHorizontal:34}} >
+            <ScrollView horizontal  >
                     <WheatherData list={list}/>
             </ScrollView>
             </View>

@@ -97,9 +97,8 @@ const styles= StyleSheet.create({
         fontWeight:"700",
     },
     ItemsContainer:{
-        backgroundColor:"gray",
-        backfaceVisibility:"visible",
-        borderRadius:10,
+        backgroundColor:"#18181bcc",
+        borderRadius:20,
         padding:10,
         marginTop:10
     },
@@ -108,7 +107,7 @@ const styles= StyleSheet.create({
         justifyContent:"space-between"
     },
     DateTimeItems_Title:{
-        color:"white",
+        color:"#eee",
         fontSize:15,
         fontWeight:"100"
 

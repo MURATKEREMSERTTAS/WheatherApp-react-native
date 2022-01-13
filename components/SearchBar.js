@@ -35,20 +35,6 @@ export default function SearchBar({cityHandler}) {
                         <Ionicons name="location-sharp" size={24} />
                     </View>
                 )}
-                renderRightButton={()=>(
-                    <View style={{
-                            flexDirection:"row",
-                            marginRight:10,
-                            backgroundColor:"white",
-                            borderRadius:30,
-                            padding:10,
-                            alignItems:"center"
-                        }}
-                    >
-                        <AntDesign name="clockcircle" size={11} />
-                        <Text style={{marginLeft:8}}>Search</Text> 
-                    </View>
-                )}
             />
         </View>
     );
