@@ -39,7 +39,7 @@ export default function WheatherData({list}){
                         <Text style={styles.Temp}>Wind Direction {object.deg}&#176;</Text>
                         <Text style={styles.Temp}>Wind Gust {object.gust}m/s</Text>
                         <Text style={styles.Temp}>Cloudiness %{object.clouds}</Text>
-                        <Text style={styles.Temp}>Probability Of Precipitation {object.pop}</Text>
+                        <Text style={styles.Temp}>Probability Of Precipitation %{object.pop*100}</Text>
                     </View>
             </View>
             </View>
@@ -52,7 +52,6 @@ const styles = StyleSheet.create({
         fontSize:40,
         fontWeight:"200",
         color:"#F8FBFF",
-        padding:10,
         textAlign:"auto",
         height:80
     },
@@ -69,7 +68,7 @@ const styles = StyleSheet.create({
         margin:10
     },
     Temp:{
-        color:"#F8FBFF",
+        color:"#18181bcc",
         fontSize:15,
         fontWeight:"100",
         textAlign:"auto"

@@ -4,7 +4,7 @@ import SearchBar from '../components/SearchBar'
 import WheatherData from '../components/home/WeatherData'
 import BottomTabs from '../components/BottomTabs'
 
-const Api_Key=""
+const Api_Key="02abc8a84f7069b3d7322ccd33235e3b"
 export default function Home({navigation}) {
     const [abc,setCity] = useState("Edirne");
     const [weatherData,setWeatherData]=useState(null)
